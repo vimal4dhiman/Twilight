@@ -4,7 +4,7 @@ const table = document.querySelector('.main')
 const btn = document.querySelector('.button')
 const divMain = document.querySelector('.main__div');
 const title = document.querySelector('.ask__click');
-
+const spin = document.querySelector('.spin')
 
 const state = {
     sunCheck: {},
@@ -71,10 +71,12 @@ btn.addEventListener('click', function(e) {
     btn.style.opacity = 0;
     title.innerHTML = ''
     divMain.innerHTML = ''
-    title.insertAdjacentText("afterbegin", `On ${day(today)}, the events details are given below`)
-
-    const html = `
-    <table id="customers" class="">
+    spin.classList.add('loader');
+    setTimeout(function() {
+        title.insertAdjacentText("afterbegin", `On ${day(today)}, the events details are given below`)
+        spin.classList.remove('loader')
+        const html = `
+    <table id="customers" class="section--hidden">
     <tr>
     <th>Details</th>
     <th>Description</th>
@@ -160,7 +162,9 @@ btn.addEventListener('click', function(e) {
     <td class="moon_set">${state.sunCheck.moonSet}</td>
 </tr>
 </table>
-
     `
-    table.insertAdjacentHTML('afterbegin', html)
+        table.insertAdjacentHTML('afterbegin', html)
+        table.classList.remove('.section--hidden')
+
+    }, 1000)
 })
