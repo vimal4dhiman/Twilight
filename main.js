@@ -68,6 +68,7 @@ if (navigator.geolocation) {
 
 btn.addEventListener('click', function(e) {
     e.preventDefault();
+    alert('The timings of the events shown are according to the location of user, they may vary with location.*They are not completely accurate')
     askClick.innerHTML = ''
     divMain.innerHTML = ''
     table.classList.add('loader');
