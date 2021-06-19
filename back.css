@@ -26,18 +26,22 @@
 }
 
 #customers tr:nth-child(even) {
-    background-color: #f2fff2;
+    background-color: #ffffff;
+}
+
+#customers tr:nth-child(odd) {
+    background-color: #ddddd9;
 }
 
 #customers tr:hover {
-    background-color: #ddd;
+    background-color: rgb(224, 224, 224);
 }
 
 #customers th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
+    background-color: #f4511e;
     color: white;
 }
 
@@ -79,11 +83,6 @@
     right: 0;
 }
 
-.sticky {
-    position: fixed;
-    background-color: rgba(255, 255, 255, 0.95);
-}
-
 
 /* Spinner in centre */
 
@@ -111,9 +110,4 @@
     100% {
         transform: rotate(360deg);
     }
-}
-
-.section--hidden {
-    opacity: 100;
-    transform: translateY(8rem);
 }

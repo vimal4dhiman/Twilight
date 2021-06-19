@@ -3,8 +3,7 @@ import * as SunCalc from "./node_modules/suncalc/suncalc.js";
 const table = document.querySelector('.main')
 const btn = document.querySelector('.button')
 const divMain = document.querySelector('.main__div');
-const title = document.querySelector('.ask__click');
-// const spin = document.querySelector('.spin')
+const askClick = document.querySelector('.ask__click');
 
 const state = {
     sunCheck: {},
@@ -23,7 +22,7 @@ const time24 = date => `${twoDigit(date.getHours())}:${twoDigit(date.getMinutes(
 const time12 = date => `${date.getHours() > 12 ? twoDigit(date.getHours() - 12) : twoDigit(date.getHours())}:${twoDigit(date.getMinutes())}:${twoDigit(date.getSeconds())} ${date.getHours() >= 12 ? 'PM' : 'AM'}`
 
 
-title.insertAdjacentText('afterbegin', `Click the button for the details on ${day(today)}`)
+askClick.insertAdjacentText('afterbegin', `Click the button for the details on ${day(today)}`)
 
 const createSunDetails = function(sunData, moonData) {
     // const details = sunData;
@@ -69,16 +68,14 @@ if (navigator.geolocation) {
 
 btn.addEventListener('click', function(e) {
     e.preventDefault();
-    btn.style.opacity = 0;
-    title.innerHTML = ''
+    askClick.innerHTML = ''
     divMain.innerHTML = ''
-    table.innerHTML = '';
     table.classList.add('loader');
     setTimeout(function() {
-        title.insertAdjacentText("afterbegin", `On ${day(today)}, the events details are given below`)
+        askClick.insertAdjacentText("afterbegin", `On ${day(today)}, the events details are given below`)
         table.classList.remove('loader')
         const html = `
-    <table id="customers" class="section--hidden">
+    <table id="customers" >
     <tr>
     <th>Details</th>
     <th>Description</th>
@@ -165,8 +162,6 @@ btn.addEventListener('click', function(e) {
 </tr>-->
 </table>
     `
-        table.insertAdjacentHTML('afterbegin', html)
-        table.classList.remove('.section--hidden')
-
+        table.insertAdjacentHTML('afterbegin', html);
     }, 1000)
 })
