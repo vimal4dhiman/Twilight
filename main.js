@@ -4,7 +4,7 @@ const table = document.querySelector('.main')
 const btn = document.querySelector('.button')
 const divMain = document.querySelector('.main__div');
 const title = document.querySelector('.ask__click');
-const spin = document.querySelector('.spin')
+// const spin = document.querySelector('.spin')
 
 const state = {
     sunCheck: {},
@@ -52,6 +52,7 @@ if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
         function(position) {
             if (!position) alert('Turn on the location and press allow')
+            console.log(position)
             const { latitude } = position.coords;
             const { longitude } = position.coords;
 
@@ -71,10 +72,11 @@ btn.addEventListener('click', function(e) {
     btn.style.opacity = 0;
     title.innerHTML = ''
     divMain.innerHTML = ''
-    spin.classList.add('loader');
+    table.innerHTML = '';
+    table.classList.add('loader');
     setTimeout(function() {
         title.insertAdjacentText("afterbegin", `On ${day(today)}, the events details are given below`)
-        spin.classList.remove('loader')
+        table.classList.remove('loader')
         const html = `
     <table id="customers" class="section--hidden">
     <tr>
@@ -152,7 +154,7 @@ btn.addEventListener('click', function(e) {
     <td>Morning nautical twilight ends, morning civil twilight starts</td>
     <td class="dawn">${state.sunCheck.dawn}</td>
 </tr>
-<td>Moon Rise</td>
+<!--<td>Moon Rise</td>
 <td>When moon rises</td>
 <td class="moon_Rise">${state.sunCheck.moonRise}</td>
 </tr>
@@ -160,7 +162,7 @@ btn.addEventListener('click', function(e) {
     <td>Moon set</td>
     <td>When moon sets</td>
     <td class="moon_set">${state.sunCheck.moonSet}</td>
-</tr>
+</tr>-->
 </table>
     `
         table.insertAdjacentHTML('afterbegin', html)
